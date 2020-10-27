@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import './App.css';
 
+import LoginPage from "./views/LoginPage";
+
 const auth = {
   token: "",
   authenticate(token) {
@@ -19,7 +21,7 @@ const auth = {
 function App() {
     const [token, setToken] = useState("");
 
-  return (
+    return (
     <div className="container">
         <Router>
         <Switch>
@@ -27,8 +29,8 @@ function App() {
                 <h1>Welcome</h1>
             </Route>
             <Route path="/login">
-                <h1>Login</h1>
-                
+                <LoginPage auth={auth} />
+
             </Route>
             <Route path="/register">
                 <h1>Register</h1>
@@ -37,6 +39,6 @@ function App() {
         </Switch>
         </Router>
     </div>
-  );
+    );
 }
 export default App;
