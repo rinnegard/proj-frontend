@@ -32,7 +32,7 @@ function Register() {
     }
 
     return (
-        <div className="content">
+        <div className="register-form">
             <h1>Register</h1>
             <form onSubmit={formSubmit}>
                 <label htmlFor="email">Email</label>

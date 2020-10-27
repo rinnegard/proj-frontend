@@ -39,7 +39,7 @@ function Login(props) {
             {token !== "" &&
                 <Redirect to = {{ pathname: "/" }} />
             }
-            <div className="content">
+            <div className="register-form">
                 <h1>Log in</h1>
                 <form onSubmit={formSubmit}>
                     <label htmlFor="email">Email</label>
