@@ -4,12 +4,14 @@ import Register from "../components/Register.js";
 function RegisterPage(props) {
 
     return (
-        <div className="content">
+        <>
             <header>
                 <h1>--NAVHERE--</h1>
             </header>
-            <Register />
-        </div>
+            <div className="content">
+                <Register />
+            </div>
+        </>
     )
 }
 
