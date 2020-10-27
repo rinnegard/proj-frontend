@@ -18,6 +18,8 @@ function Login(props) {
         .then(function(res) {
             console.log(res);
             props.auth.authenticate(res.data.data.token);
+            props.auth.setId(res.data.data.id);
+            props.auth.setEmail(res.data.data.email);
             setToken(res.data.data.token);
         })
         .catch(function(error) {

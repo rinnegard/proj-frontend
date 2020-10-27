@@ -11,13 +11,23 @@ import RegisterPage from "./views/RegisterPage";
 import Index from "./views/Index";
 
 const auth = {
-  token: "",
-  authenticate(token) {
-    auth.token = token;
-  },
-  signout() {
-    auth.token = "";
-  }
+    token: "",
+    id: "",
+    email: "",
+    authenticate(token) {
+        auth.token = token;
+        },
+    setId(id) {
+        auth.id = id;
+    },
+    setEmail(email) {
+        auth.email = email;
+    },
+    signout() {
+        auth.token = "";
+        auth.id = "";
+        auth.email = "";
+    }
 };
 
 function App() {

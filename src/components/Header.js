@@ -6,6 +6,7 @@ function Header(props) {
 
     return (
         <header>
+            <h1>Precious Metals</h1>
             <Nav />
             <AccountStatus auth={props.auth} />
         </header>
