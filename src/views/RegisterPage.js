@@ -6,7 +6,7 @@ function RegisterPage(props) {
 
     return (
         <>
-            <Header />
+            <Header auth={props.auth}/>
             <div className="content">
                 <Register />
             </div>

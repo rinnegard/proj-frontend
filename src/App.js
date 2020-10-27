@@ -45,7 +45,7 @@ function App() {
                 <LoginPage auth={auth} />
             </Route>
             <Route path="/register">
-                <RegisterPage />
+                <RegisterPage auth={auth}/>
             </Route>
             <Route path="/user/:id">
                 <UserPage auth={auth} />
