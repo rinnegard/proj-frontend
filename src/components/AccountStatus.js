@@ -5,7 +5,7 @@ function AccountStatus(props) {
     console.log(props.auth.token);
     return (
         <div className="user-status">
-            {props.auth.token ? <Link to={"/user/" + props.auth.token}>User</Link> : <Link to="/login">Login</Link>
+            {props.auth.token ? <Link to={"/user/" + props.auth.id}>{props.auth.email}</Link> : <Link to="/login">Login</Link>
             }
         </div>
     );
