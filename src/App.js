@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import './App.css';
 
+const auth = {
+  token: "",
+  authenticate(token) {
+    auth.token = token;
+  },
+  signout() {
+    auth.token = "";
+  }
+};
+
 function App() {
+    const [token, setToken] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+        <Router>
+        <Switch>
+            <Route exact path="/">
+                <Home name="Home"/>
+            </Route>
+            <Route path="/login">
+                <Login auth={auth} />
+            </Route>
+            <Route path="/register">
+                <Register />
+            </Route>
+        </Switch>
+        </Router>
     </div>
   );
 }
-
 export default App;
