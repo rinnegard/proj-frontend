@@ -24,13 +24,15 @@ function App() {
         <Router>
         <Switch>
             <Route exact path="/">
-                <Home name="Home"/>
+                <h1>Welcome</h1>
             </Route>
             <Route path="/login">
-                <Login auth={auth} />
+                <h1>Login</h1>
+                
             </Route>
             <Route path="/register">
-                <Register />
+                <h1>Register</h1>
+
             </Route>
         </Switch>
         </Router>
