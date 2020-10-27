@@ -7,6 +7,7 @@ import {
 import './App.css';
 
 import LoginPage from "./views/LoginPage";
+import RegisterPage from "./views/RegisterPage";
 
 const auth = {
   token: "",
@@ -30,11 +31,9 @@ function App() {
             </Route>
             <Route path="/login">
                 <LoginPage auth={auth} />
-
             </Route>
             <Route path="/register">
-                <h1>Register</h1>
-
+                <RegisterPage />
             </Route>
         </Switch>
         </Router>
