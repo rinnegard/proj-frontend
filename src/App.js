@@ -9,6 +9,7 @@ import './App.css';
 import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import Index from "./views/Index";
+import UserPage from "./views/UserPage";
 
 const auth = {
     token: "",
@@ -45,6 +46,9 @@ function App() {
             </Route>
             <Route path="/register">
                 <RegisterPage />
+            </Route>
+            <Route path="/user/:id">
+                <UserPage auth={auth} />
             </Route>
         </Switch>
         </Router>
