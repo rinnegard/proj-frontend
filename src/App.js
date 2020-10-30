@@ -10,6 +10,8 @@ import LoginPage from "./views/LoginPage";
 import RegisterPage from "./views/RegisterPage";
 import Index from "./views/Index";
 import UserPage from "./views/UserPage";
+import Commodities from "./views/Commodities";
+import Commodity from "./views/Commodity";
 
 const auth = {
     token: "",
@@ -40,6 +42,12 @@ function App() {
         <Switch>
             <Route exact path="/">
                 <Index auth={auth}/>
+            </Route>
+            <Route exact path="/commodities">
+                <Commodities auth={auth}/>
+            </Route>
+            <Route exact path="/commodities/:id">
+                <Commodity auth={auth}/>
             </Route>
             <Route path="/login">
                 <LoginPage auth={auth} />

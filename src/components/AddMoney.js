@@ -38,11 +38,16 @@ function AddMoney(props) {
     return (
         <>
             <div className="user-balance-form">
+
                 <form onSubmit={formSubmit}>
-                    <label htmlFor="user-balance">Add balance</label>
-                    <input type="number" name="user-balance" required onChange={onChange} value={money}/>
-                    <input className="button" type="submit" value="Submit" />
+                    <fieldset>
+                        <legend>Manage Account</legend>
+                        <label htmlFor="user-balance">Update Balance</label>
+                        <input type="number" name="user-balance" required onChange={onChange} value={money}/>
+                        <input className="button" type="submit" value="Submit" />
+                    </fieldset>
                 </form>
+
             </div>
         </>
     )

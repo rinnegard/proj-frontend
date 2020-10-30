@@ -8,6 +8,18 @@ html, body {
 
 }
 
+.container {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.content {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    flex: 1 1 auto;
+    padding: 0 15px
+}
+
 body, .root, .container {
     min-height: 100vh;
 }
@@ -18,6 +30,7 @@ header {
     align-items: center;
     background-color: #fff;
     padding: 0 10px;
+    border-bottom: #e6e6e6 1px solid;
 }
 
 header h1 {
@@ -106,7 +119,12 @@ header h1::first-letter {
     margin: 0 auto;
 }
 
-.register-form input {
+.user-balance-form form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.register-form input, .user-balance-form input{
     display: block;
     border: 1px solid #ccc;
     border-radius: 0.2rem;
@@ -115,6 +133,11 @@ header h1::first-letter {
     width: 32rem;
     margin-bottom: 1.4rem;
 }
+
+.user-balance-form input, .user-balance-form label {
+    width: 100%;
+}
+
 
 .register-form .button {
     background-color: #ccc;
@@ -132,4 +155,40 @@ header h1::first-letter {
     background-color: #dcdcdc;
     background-image: none;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.user-info table {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    border-collapse: collapse;
+}
+
+.user-info td {
+    border-bottom: solid 1px grey;
+    border-top: solid 1px grey;
+
+    padding: 10px 0;
+}
+
+.user-info .name {
+    width: 50%;
+    font-weight: bold;
+}
+
+.user-info .value {
+    text-align: right;
+}
+
+table {
+    margin: 0 auto;
+    margin-bottom: 24px;
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: solid 1px grey;
+    border-top: solid 1px grey;
+
+    padding: 10px;
 }
