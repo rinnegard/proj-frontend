@@ -48,7 +48,7 @@ function App() {
             <Route exact path="/commodities" >
                 <Commodities auth={auth}/>
             </Route>
-            <ProtectedRoute exact path="/commodities/:id" auth={auth}>
+            <ProtectedRoute path="/commodities/:id" auth={auth}>
                 <Commodity auth={auth}/>
             </ProtectedRoute>
             <Route path="/login">
@@ -57,9 +57,15 @@ function App() {
             <Route path="/register">
                 <RegisterPage auth={auth}/>
             </Route>
+            <Route path="/blocked">
+                <h1>You do not have access to this page</h1>
+            </Route>
             <ProtectedRoute path="/user/:id" auth={auth}>
                 <UserPage auth={auth} />
             </ProtectedRoute>
+            <Route path="*">
+                <h1>404</h1>
+            </Route>
         </Switch>
         </Router>
     </div>
