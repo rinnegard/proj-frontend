@@ -1,11 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, withRouter } from "react-router-dom";
 import axios from "axios";
 
 function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [token, setToken] = useState("");
+
+    let next = "";
+    if (props.location.state) {
+        next = props.location.state.from.pathname;
+    } else {
+        next = "/";
+    }
+
+    console.log("From", next);
+
 
     function formSubmit(e) {
         e.preventDefault();
@@ -36,10 +46,9 @@ function Login(props) {
     }
 
     return (
-
         <>
             {token !== "" &&
-                <Redirect to = {{ pathname: "/" }} />
+                <Redirect to={{ pathname: next }} />
             }
             <div className="register-form">
                 <h1>Log in</h1>
@@ -61,4 +70,4 @@ function Login(props) {
     )
 }
 
-export default Login;
+export default withRouter(Login);

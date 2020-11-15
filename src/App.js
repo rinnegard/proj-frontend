@@ -13,6 +13,8 @@ import UserPage from "./views/UserPage";
 import Commodities from "./views/Commodities";
 import Commodity from "./views/Commodity";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+
 const auth = {
     token: "",
     id: "",
@@ -43,21 +45,21 @@ function App() {
             <Route exact path="/">
                 <Index auth={auth}/>
             </Route>
-            <Route exact path="/commodities">
+            <Route exact path="/commodities" >
                 <Commodities auth={auth}/>
             </Route>
-            <Route exact path="/commodities/:id">
+            <ProtectedRoute exact path="/commodities/:id" auth={auth}>
                 <Commodity auth={auth}/>
-            </Route>
+            </ProtectedRoute>
             <Route path="/login">
                 <LoginPage auth={auth} />
             </Route>
             <Route path="/register">
                 <RegisterPage auth={auth}/>
             </Route>
-            <Route path="/user/:id">
+            <ProtectedRoute path="/user/:id" auth={auth}>
                 <UserPage auth={auth} />
-            </Route>
+            </ProtectedRoute>
         </Switch>
         </Router>
     </div>

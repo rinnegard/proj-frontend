@@ -34,14 +34,16 @@ function Commodity(props) {
             <div className="content">
                 <h1>{id}</h1>
                 <table>
-                    <tr>
-                        <td className="name">
-                            Price
-                        </td>
-                        <td className="value">
-                            52.12
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td className="name">
+                                Price
+                            </td>
+                            <td className="value">
+                                52.12
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
                   <LineChart width={600} height={300} data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
