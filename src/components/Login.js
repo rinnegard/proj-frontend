@@ -6,6 +6,7 @@ function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [token, setToken] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     let next = "";
     if (props.location.state) {
@@ -33,7 +34,8 @@ function Login(props) {
             setToken(res.data.data.token);
         })
         .catch(function(error) {
-            console.log(error);
+            console.log(error.response);
+            setErrorMessage(error.response.data.errors.detail)
         })
     }
 
@@ -57,6 +59,7 @@ function Login(props) {
                     <input type="email" name="email" required placeholder="john.doe@gmail.com" onChange={inputChange}/>
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" required onChange={inputChange}/>
+                    {errorMessage && <p className="error">{errorMessage}</p>}
                     <input className="blue-button button" type="submit" value="Submit" />
                     <Link
                         to="/register"
