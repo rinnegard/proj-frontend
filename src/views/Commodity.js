@@ -67,9 +67,19 @@ function Commodity(props) {
 
         if (e.nativeEvent.submitter.value === "Buy") {
             console.log("Buying");
-            //Update database
+            //Update database balance
             body.money = -price*amount;
             authAxios.post("/updateMoney", body)
+            .then(function(res) {
+                console.log(res);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+            //Update database items
+            body.item = id;
+            body.amount = amount;
+            authAxios.post("/updateItem", body)
             .then(function(res) {
                 console.log(res);
             })
@@ -88,9 +98,19 @@ function Commodity(props) {
                 setErrorMessage("You don't have that many to sell");
                 return;
             }
-            //Update database
+            //Update database balance
             body.money = price*amount;
             authAxios.post("/updateMoney", body)
+            .then(function(res) {
+                console.log(res);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+            //Update database items
+            body.item = id;
+            body.amount = -amount;
+            authAxios.post("/updateItem", body)
             .then(function(res) {
                 console.log(res);
             })
@@ -146,7 +166,7 @@ function Commodity(props) {
                 <div className="form">
                     <form onSubmit={formSubmit}>
                         <label htmlFor="buysell-stock">Amount to buy or sell</label>
-                        <input type="number" name="buysell-stock" required onChange={onChange} value={amount}/>
+                        <input type="number" name="buysell-stock" required onChange={onChange} value={amount} min={1} />
                         <p>Cost: {!Number.isNaN(price*amount) && price*amount}</p>
                         {errorMessage && <p className="error">{errorMessage}</p>}
                         <input className="button half-button buy-button" type="submit" value="Buy" />
