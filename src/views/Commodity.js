@@ -12,6 +12,7 @@ function Commodity(props) {
     const [amount, setAmount] = useState("");
     const [price, setPrice] = useState(32);
     const [owned, setOwned] = useState(0);
+    const [errorMessage, setErrorMessage] = useState("");
     const data = [
         {
             price: 15, time: new Date("2015-03-25T07:00:00Z").getTime()
@@ -53,12 +54,29 @@ function Commodity(props) {
 
 
     function formSubmit(e) {
+        setErrorMessage("");
         e.preventDefault();
+
         console.log(e.nativeEvent.submitter);
         console.log("Owned: ", owned);
         console.log("Amount: ", amount);
+
+        const body = {
+            email: props.auth.email,
+        }
+
         if (e.nativeEvent.submitter.value === "Buy") {
             console.log("Buying");
+            //Update database
+            body.money = -price*amount;
+            authAxios.post("/updateMoney", body)
+            .then(function(res) {
+                console.log(res);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+            //Update frontend
             if (typeof owned === 'undefined') {
                 setOwned(amount);
             } else {
@@ -66,6 +84,20 @@ function Commodity(props) {
             }
         } else if (e.nativeEvent.submitter.value === "Sell") {
             console.log("Selling");
+            if (amount > owned) {
+                setErrorMessage("You don't have that many to sell");
+                return;
+            }
+            //Update database
+            body.money = price*amount;
+            authAxios.post("/updateMoney", body)
+            .then(function(res) {
+                console.log(res);
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+            //Update frontend
             setOwned(owned - amount);
         }
     }
@@ -116,6 +148,7 @@ function Commodity(props) {
                         <label htmlFor="buysell-stock">Amount to buy or sell</label>
                         <input type="number" name="buysell-stock" required onChange={onChange} value={amount}/>
                         <p>Cost: {!Number.isNaN(price*amount) && price*amount}</p>
+                        {errorMessage && <p className="error">{errorMessage}</p>}
                         <input className="button half-button buy-button" type="submit" value="Buy" />
                         <input className="button half-button sell-button" type="submit" value="Sell" />
                     </form>
