@@ -55,18 +55,24 @@ function Commodity(props) {
     function formSubmit(e) {
         e.preventDefault();
         console.log(e.nativeEvent.submitter);
+        console.log("Owned: ", owned);
+        console.log("Amount: ", amount);
         if (e.nativeEvent.submitter.value === "Buy") {
             console.log("Buying");
-            setOwned(owned + amount);
+            if (typeof owned === 'undefined') {
+                setOwned(amount);
+            } else {
+                setOwned(owned + amount);
+            }
         } else if (e.nativeEvent.submitter.value === "Sell") {
             console.log("Selling");
             setOwned(owned - amount);
         }
-        console.log(owned);
     }
 
     function onChange(e) {
         setAmount(parseInt(e.target.value))
+        console.log(amount);
     }
 
     return (
