@@ -24,6 +24,10 @@ html, body {
     padding: 0 15px
 }
 
+.content h1 {
+    text-transform: capitalize;
+}
+
 body, .root, .container {
     min-height: 100vh;
 }
@@ -123,12 +127,12 @@ header h1::first-letter {
     margin: 0 auto;
 }
 
-.user-balance-form form {
+.form , .user-balance-form form {
     width: 60%;
     margin: 0 auto;
 }
 
-.register-form input, .user-balance-form input{
+.form input, .register-form input, .user-balance-form input{
     display: block;
     border: 1px solid #ccc;
     border-radius: 0.2rem;
@@ -138,24 +142,24 @@ header h1::first-letter {
     margin-bottom: 1.4rem;
 }
 
-.user-balance-form input, .user-balance-form label {
+.form input, .user-balance-form input, .user-balance-form label {
     width: 100%;
 }
 
 
-.register-form .button {
+.register-form .button, .button {
     background-color: #ccc;
     background-image: none;
     font-size: 1em;
     font-weight: 600;
 }
 
-.register-form .button:hover {
+.register-form .button:hover, .button:hover {
     background-color: #ddd;
     background-image: none;
 }
 
-.register-form .button:active {
+.register-form .button:active, .button:active{
     background-color: #dcdcdc;
     background-image: none;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
