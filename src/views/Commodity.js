@@ -74,35 +74,37 @@ function Commodity(props) {
             <Header auth={props.auth} />
             <div className="content">
                 <h1>{id}</h1>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td className="name">
-                                Current Price
-                            </td>
-                            <td className="value">
-                                {price}
-                            </td>
+                <div className="user-info">
+                    <table >
+                        <tbody>
+                            <tr>
+                                <td className="name">
+                                    Current Price
+                                </td>
+                                <td className="value">
+                                    {price}
+                                </td>
 
-                        </tr>
-                        <tr>
-                            <td className="name">
-                                Amount Owned
-                            </td>
-                            <td className="value">
-                                {owned}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="name">
-                                Total Value
-                            </td>
-                            <td className="value">
-                                 {!Number.isNaN(price*owned) && price*owned}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </tr>
+                            <tr>
+                                <td className="name">
+                                    Amount Owned
+                                </td>
+                                <td className="value">
+                                    {owned}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="name">
+                                    Total Value
+                                </td>
+                                <td className="value">
+                                     {!Number.isNaN(price*owned) && price*owned}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div className="form">
                     <form onSubmit={formSubmit}>
                         <label htmlFor="buysell-stock">Amount to buy or sell</label>
