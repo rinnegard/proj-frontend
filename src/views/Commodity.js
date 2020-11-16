@@ -98,7 +98,7 @@ function Commodity(props) {
                                 Total Value
                             </td>
                             <td className="value">
-                                {price*owned}
+                                 {!Number.isNaN(price*owned) && price*owned}
                             </td>
                         </tr>
                     </tbody>
@@ -108,8 +108,8 @@ function Commodity(props) {
                         <label htmlFor="buysell-stock">Amount to buy or sell</label>
                         <input type="number" name="buysell-stock" required onChange={onChange} value={amount}/>
                         <p>Cost: {!Number.isNaN(price*amount) && price*amount}</p>
-                        <input className="button" type="submit" value="Buy" />
-                        <input className="button" type="submit" value="Sell" />
+                        <input className="button half-button buy-button" type="submit" value="Buy" />
+                        <input className="button half-button sell-button" type="submit" value="Sell" />
                     </form>
                 </div>
                   <LineChart width={600} height={300} data={data}>

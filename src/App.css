@@ -146,7 +146,6 @@ header h1::first-letter {
     width: 100%;
 }
 
-
 .register-form .button, .button {
     background-color: #ccc;
     background-image: none;
@@ -186,6 +185,42 @@ header h1::first-letter {
 
 .user-info .value {
     text-align: right;
+}
+
+form input.half-button {
+    width: 50%;
+}
+
+form input.buy-button {
+    float: right;
+    background-color: #73e673;
+}
+
+form input.sell-button {
+    float: left;
+    background-color: #fd7878;
+
+}
+
+form input.buy-button:hover {
+    background-color: #35ff35;
+}
+
+form input.sell-button:hover {
+    background-color: #ff3e3e;
+}
+
+form input.buy-button:active {
+    background-color: #278e27;
+}
+
+form input.sell-button:active {
+    background-color: #9b1e1e;
+}
+
+
+.recharts-wrapper {
+    clear: both;
 }
 
 table {
