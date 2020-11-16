@@ -57,6 +57,9 @@ function Commodity(props) {
         setErrorMessage("");
         e.preventDefault();
 
+        let ownedElement = document.getElementsByClassName("owned-value")[0];
+        ownedElement.classList.remove("increase", "decrease")
+
         console.log(e.nativeEvent.submitter);
         console.log("Owned: ", owned);
         console.log("Amount: ", amount);
@@ -92,6 +95,12 @@ function Commodity(props) {
             } else {
                 setOwned(owned + amount);
             }
+
+            console.log(ownedElement);
+            ownedElement.classList.add("increase")
+            let showUpdate = setTimeout(function() {
+                ownedElement.classList.remove("increase")
+            }, 4000)
         } else if (e.nativeEvent.submitter.value === "Sell") {
             console.log("Selling");
             if (amount > owned) {
@@ -119,6 +128,13 @@ function Commodity(props) {
             })
             //Update frontend
             setOwned(owned - amount);
+
+
+            console.log(ownedElement);
+            ownedElement.classList.add("decrease")
+            let showUpdate = setTimeout(function() {
+                ownedElement.classList.remove("decrease")
+            }, 4000)
         }
     }
 
@@ -139,7 +155,7 @@ function Commodity(props) {
                                 <td className="name">
                                     Current Price
                                 </td>
-                                <td className="value">
+                                <td className="value price-value">
                                     {price}
                                 </td>
 
@@ -148,7 +164,7 @@ function Commodity(props) {
                                 <td className="name">
                                     Amount Owned
                                 </td>
-                                <td className="value">
+                                <td className="value owned-value">
                                     {owned}
                                 </td>
                             </tr>
