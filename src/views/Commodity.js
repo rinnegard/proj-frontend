@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import Header from "../components/Header.js";
 import axios from "axios";
+import io from 'socket.io-client';
+import useSocket from 'use-socket.io-client';
+import Header from "../components/Header.js";
 import { Link } from "react-router-dom";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
@@ -33,6 +35,7 @@ function Commodity(props) {
             price: 21, time:  new Date("2015-03-25T23:00:00Z").getTime()
         },
     ]
+    const [socket] = useSocket('http://localhost:1338');
 
     const authAxios = axios.create({
         baseURL: "http://localhost:1338",
@@ -51,6 +54,21 @@ function Commodity(props) {
             console.log(error);
         })
     }, []);
+
+
+    useEffect(() => {
+        socket.on("connect", function() {
+            console.log("Connected");
+            socket.on("gold", function(item) {
+                console.log(item);
+            })
+            socket.on("silver", function(item) {
+                console.log(item);
+            })
+        })
+
+
+    }, [data]);
 
 
     function formSubmit(e) {
@@ -95,8 +113,6 @@ function Commodity(props) {
             } else {
                 setOwned(owned + amount);
             }
-
-            console.log(ownedElement);
             ownedElement.classList.add("increase")
             let showUpdate = setTimeout(function() {
                 ownedElement.classList.remove("increase")
@@ -128,9 +144,6 @@ function Commodity(props) {
             })
             //Update frontend
             setOwned(owned - amount);
-
-
-            console.log(ownedElement);
             ownedElement.classList.add("decrease")
             let showUpdate = setTimeout(function() {
                 ownedElement.classList.remove("decrease")
