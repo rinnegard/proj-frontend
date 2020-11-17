@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import io from 'socket.io-client';
-import useSocket from 'use-socket.io-client';
 import Header from "../components/Header.js";
 import { Link } from "react-router-dom";
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
+
+import io from 'socket.io-client';
+const socket = io('ws://localhost:1338');
 
 function Commodity(props) {
     const { id } = useParams();
@@ -16,8 +17,6 @@ function Commodity(props) {
     const [owned, setOwned] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
     const [data, setData] = useState([]);
-
-    const [socket] = useSocket('http://localhost:1338');
 
     const authAxios = axios.create({
         baseURL: "http://localhost:1338",
@@ -35,33 +34,33 @@ function Commodity(props) {
         .catch(function(error) {
             console.log(error);
         })
-    }, []);
+    }, [id, socket]);
 
 
     useEffect(() => {
+        console.log("Effect 2");
         socket.on("connect", function() {
             console.log("Connected");
-            socket.on(id, function(item) {
-                console.log(item);
-
-                let priceElement = document.getElementsByClassName("price-value")[0];
-                priceElement.classList.remove("increase", "decrease")
-
-                if (item.price > price) {
-                    console.log("Up");
-                    priceElement.classList.add("increase");
-                } else {
-                    console.log("Down");
-                    priceElement.classList.add("decrease");
-                }
-
-                let showUpdatePrice = setTimeout(function() {
-                    priceElement.classList.remove("increase", "decrease")
-                }, 1000)
-                setData(data => [...data, item])
-                setPrice(item.price)
-            })
         })
+
+        socket.on(id, function(item) {
+            console.log(item);
+
+            setData(data => [...data, item])
+            setPrice(item.price)
+        })
+
+        socket.on('connect_error', (error) => {
+            console.log(error);
+        });
+
+        socket.on('disconnect', function() {
+            console.info("Disconnected");
+        });
+
+        return () => {
+            socket.off();
+        }
     }, []);
 
 
