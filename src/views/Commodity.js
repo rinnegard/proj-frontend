@@ -12,29 +12,11 @@ import {
 function Commodity(props) {
     const { id } = useParams();
     const [amount, setAmount] = useState("");
-    const [price, setPrice] = useState(32);
+    const [price, setPrice] = useState(0);
     const [owned, setOwned] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
-    const data = [
-        {
-            price: 15, time: new Date("2015-03-25T07:00:00Z").getTime()
-        },
-        {
-            price: 18, time: new Date("2015-03-25T11:00:00Z").getTime()
-        },
-        {
-            price: 13, time:  new Date("2015-03-25T14:00:00Z").getTime()
-        },
-        {
-            price: 5, time:  new Date("2015-03-25T17:00:00Z").getTime()
-        },
-        {
-            price: 5, time:  new Date("2015-03-25T21:00:00Z").getTime()
-        },
-        {
-            price: 21, time:  new Date("2015-03-25T23:00:00Z").getTime()
-        },
-    ]
+    const [data, setData] = useState([]);
+
     const [socket] = useSocket('http://localhost:1338');
 
     const authAxios = axios.create({
@@ -59,16 +41,28 @@ function Commodity(props) {
     useEffect(() => {
         socket.on("connect", function() {
             console.log("Connected");
-            socket.on("gold", function(item) {
+            socket.on(id, function(item) {
                 console.log(item);
-            })
-            socket.on("silver", function(item) {
-                console.log(item);
+
+                let priceElement = document.getElementsByClassName("price-value")[0];
+                priceElement.classList.remove("increase", "decrease")
+
+                if (item.price > price) {
+                    console.log("Up");
+                    priceElement.classList.add("increase");
+                } else {
+                    console.log("Down");
+                    priceElement.classList.add("decrease");
+                }
+
+                let showUpdatePrice = setTimeout(function() {
+                    priceElement.classList.remove("increase", "decrease")
+                }, 1000)
+                setData(data => [...data, item])
+                setPrice(item.price)
             })
         })
-
-
-    }, [data]);
+    }, []);
 
 
     function formSubmit(e) {
@@ -169,7 +163,7 @@ function Commodity(props) {
                                     Current Price
                                 </td>
                                 <td className="value price-value">
-                                    {price}
+                                    {Math.round(price * 100) / 100}
                                 </td>
 
                             </tr>
@@ -186,7 +180,7 @@ function Commodity(props) {
                                     Total Value
                                 </td>
                                 <td className="value">
-                                     {!Number.isNaN(price*owned) && price*owned}
+                                     {!Number.isNaN(price*owned) && Math.round(price*owned * 100) / 100}
                                 </td>
                             </tr>
                         </tbody>
