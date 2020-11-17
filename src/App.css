@@ -247,6 +247,11 @@ td {
         color: red;
 }
 
+img {
+    width: 100%;
+    height: 400px;
+}
+
 @media (max-width: 1300px) {
     .content {
         width: 60%;
