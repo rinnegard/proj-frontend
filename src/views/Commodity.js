@@ -4,7 +4,7 @@ import axios from "axios";
 import Header from "../components/Header.js";
 import { Link } from "react-router-dom";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
 
 import io from 'socket.io-client';
@@ -189,21 +189,24 @@ function Commodity(props) {
                     <form onSubmit={formSubmit}>
                         <label htmlFor="buysell-stock">Amount to buy or sell</label>
                         <input type="number" name="buysell-stock" required onChange={onChange} value={amount} min={1} />
-                        <p>Cost: {!Number.isNaN(price*amount) && price*amount}</p>
+                        <p>Total: {!Number.isNaN(price*amount) &&  Math.round(price*amount * 100) / 100}</p>
                         {errorMessage && <p className="error">{errorMessage}</p>}
                         <input className="button half-button buy-button" type="submit" value="Buy" />
                         <input className="button half-button sell-button" type="submit" value="Sell" />
                     </form>
                 </div>
-                  <LineChart width={600} height={300} data={data}>
+                <ResponsiveContainer width="95%" height={300}>
+                    <LineChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis
                         dataKey="time"
                         type="number"
-                        domain={['dataMin', 'dataMax']}
+                        domain={["dataMin", 'dataMax']}
                         tickFormatter={(tick) => {return new Date(tick).toTimeString().substring(0, 5);}}
                     />
-                    <YAxis />
+                    <YAxis
+                        type="number"
+                    />
                     <Line type="monotone" dataKey="price" stroke="#8884d8" activeDot={{ r: 10 }} dot={false}/>
                     <Tooltip
                         labelFormatter={(tick) => {
@@ -213,7 +216,8 @@ function Commodity(props) {
                             return Math.round(value * 100) / 100
                         }}
                     />
-                  </LineChart>
+                    </LineChart>
+                </ResponsiveContainer>
 
             </div>
         </>

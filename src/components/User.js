@@ -4,27 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function UserPage(props) {
-    // const { id } = useParams();
-    // const [user, setUser] = useState({});
-    //
-    // const authAxios = axios.create({
-    //     baseURL: "http://localhost:1338",
-    //     headers: {
-    //         Authorization: `Bearer ${props.auth.token}`
-    //     }
-    // });
-    //
-    // useEffect(() => {
-    //     authAxios.get("/user/" + id)
-    //     .then(function(res) {
-    //         console.log(res.data.doc);
-    //         setUser(res.data.doc)
-    //     })
-    //     .catch(function(error) {
-    //         console.log(error);
-    //     })
-    // }, []);
-
     return (
         <>
             <div className="user-info">
@@ -44,7 +23,7 @@ function UserPage(props) {
                                 Account Balance
                             </td>
                             <td className="value">
-                                {typeof props.balance === "number" ? props.balance : 0}
+                                {typeof props.balance === "number" ? Math.round(props.balance * 100) / 100 : 0}
                             </td>
                         </tr>
                         <tr>

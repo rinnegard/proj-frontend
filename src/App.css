@@ -21,7 +21,7 @@ html, body {
 .content {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     flex: 1 1 auto;
-    padding: 0 15px
+    padding: 0 10px;
 }
 
 .content h1 {
@@ -219,8 +219,9 @@ form input.sell-button:active {
 }
 
 
-.recharts-wrapper {
+.recharts-responsive-container {
     clear: both;
+    margin: 0 auto;
 }
 
 table {
@@ -244,4 +245,36 @@ td {
 .decrease {
         font-weight: bold;
         color: red;
+}
+
+@media (max-width: 1300px) {
+    .content {
+        width: 60%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .content {
+        width: 90%;
+        box-shadow: none;
+    }
+}
+
+
+@media (max-width: 550px) {
+    .content {
+        width: 90%;
+        box-shadow: none;
+    }
+    header h1 {
+        display: none;
+    }
+
+    .login-form, .register-form, .user-balance-form form, .user-info table{
+        width: 90%;
+    }
+
+    .form input, .register-form input, .user-balance-form input {
+        width: 100%;
+    }
 }
