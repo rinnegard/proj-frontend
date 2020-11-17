@@ -201,12 +201,18 @@ function Commodity(props) {
                         dataKey="time"
                         type="number"
                         domain={['dataMin', 'dataMax']}
-                        scale="time"
                         tickFormatter={(tick) => {return new Date(tick).toTimeString().substring(0, 5);}}
                     />
                     <YAxis />
-                    <Line type="monotone" dataKey="price" stroke="#8884d8" activeDot={{ r: 10 }} />
-                    <Tooltip />
+                    <Line type="monotone" dataKey="price" stroke="#8884d8" activeDot={{ r: 10 }} dot={false}/>
+                    <Tooltip
+                        labelFormatter={(tick) => {
+                            return new Date(tick).toTimeString().substring(0, 5);
+                        }}
+                        formatter={(value) => {
+                            return Math.round(value * 100) / 100
+                        }}
+                    />
                   </LineChart>
 
             </div>
