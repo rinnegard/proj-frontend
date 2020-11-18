@@ -3,7 +3,7 @@ import Header from "../components/Header.js";
 import { Link } from "react-router-dom";
 
 import io from 'socket.io-client';
-const socket = io('ws://localhost:1338');
+const socket = io('https://proj-api.rinnegard.me');
 
 function Commodities(props) {
     const [goldPrice, setGoldPrice] = useState(0);

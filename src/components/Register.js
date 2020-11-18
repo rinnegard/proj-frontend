@@ -11,7 +11,7 @@ function Register() {
         e.preventDefault();
         console.log(email);
         console.log(password);
-        axios.post("http://localhost:1338/register", {
+        axios.post("https://proj-api.rinnegard.me/register", {
             email: email,
             password: password
         })

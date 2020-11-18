@@ -20,7 +20,7 @@ function Login(props) {
 
     function formSubmit(e) {
         e.preventDefault();
-        axios.post("http://localhost:1338/login", {
+        axios.post("https://proj-api.rinnegard.me/login", {
             email: email,
             password: password
         })

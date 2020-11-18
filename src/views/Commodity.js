@@ -8,7 +8,7 @@ import {
 } from 'recharts';
 
 import io from 'socket.io-client';
-const socket = io('ws://localhost:1338');
+const socket = io('https://proj-api.rinnegard.me');
 
 function Commodity(props) {
     const { id } = useParams();
@@ -19,7 +19,7 @@ function Commodity(props) {
     const [data, setData] = useState([]);
 
     const authAxios = axios.create({
-        baseURL: "http://localhost:1338",
+        baseURL: "https://proj-api.rinnegard.me",
         headers: {
             Authorization: `Bearer ${props.auth.token}`
         }

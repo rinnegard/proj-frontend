@@ -1,3 +1,6 @@
+Jag valde att använda react för frontenden. Jag tyckte om hur det fungerade tidigare och jag är ganska bekväm med react nu. Och jag tycker det är smidigt att arbeta på det sättet react kombinerar html och js. Och hur man kan återanvända komponenter på att enkelt sätt. Jag använder React Router  för att hanterna routing. Det var också enkelt att komma igång med när man var bekant med hur react fungerar.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

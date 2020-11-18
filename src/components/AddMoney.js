@@ -7,7 +7,7 @@ function AddMoney(props) {
     const [money, setMoney] = useState("");
 
     const authAxios = axios.create({
-        baseURL: "http://localhost:1338",
+        baseURL: "https://proj-api.rinnegard.me",
         headers: {
             Authorization: `Bearer ${props.auth.token}`
         }
