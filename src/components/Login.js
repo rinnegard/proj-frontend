@@ -20,8 +20,6 @@ function Login(props) {
 
     function formSubmit(e) {
         e.preventDefault();
-        console.log(email);
-        console.log(password);
         axios.post("http://localhost:1338/login", {
             email: email,
             password: password

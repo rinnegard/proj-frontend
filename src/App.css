@@ -238,13 +238,11 @@ td {
 }
 
 .increase {
-    font-weight: bold;
     color: green;
 }
 
 .decrease {
-        font-weight: bold;
-        color: red;
+    color: red;
 }
 
 img {

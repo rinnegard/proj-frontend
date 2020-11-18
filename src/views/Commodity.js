@@ -38,14 +38,12 @@ function Commodity(props) {
 
 
     useEffect(() => {
-        console.log("Effect 2");
         socket.on("connect", function() {
             console.log("Connected");
         })
 
         socket.on(id, function(item) {
-            console.log(item);
-
+            showUpdateColor("price-value", item.price, price)
             setData(data => [...data, item])
             setPrice(item.price)
         })
@@ -61,7 +59,7 @@ function Commodity(props) {
         return () => {
             socket.off();
         }
-    }, []);
+    }, [price]);
 
 
     function formSubmit(e) {
@@ -80,7 +78,6 @@ function Commodity(props) {
         }
 
         if (e.nativeEvent.submitter.value === "Buy") {
-            console.log("Buying");
             //Update database balance
             body.money = -price*amount;
             authAxios.post("/updateMoney", body)
@@ -111,7 +108,6 @@ function Commodity(props) {
                 ownedElement.classList.remove("increase")
             }, 4000)
         } else if (e.nativeEvent.submitter.value === "Sell") {
-            console.log("Selling");
             if (amount > owned) {
                 setErrorMessage("You don't have that many to sell");
                 return;
@@ -144,9 +140,20 @@ function Commodity(props) {
         }
     }
 
+    function showUpdateColor(name, newPrice, oldPrice) {
+        let element = document.getElementsByClassName(name)[0];
+        if (oldPrice < newPrice) {
+            element.classList.add("increase");
+        } else {
+            element.classList.add("decrease");
+        }
+        let showUpdate = setTimeout(function() {
+            element.classList.remove("decrease", "increase")
+        }, 1000)
+    }
+
     function onChange(e) {
         setAmount(parseInt(e.target.value))
-        console.log(amount);
     }
 
     return (

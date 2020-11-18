@@ -15,14 +15,12 @@ function Commodities(props) {
         })
 
         socket.on("gold", function(item) {
-            console.log(item.price);
-
+            showUpdateColor("gold", item.price, goldPrice)
             setGoldPrice(item.price)
         })
 
         socket.on("silver", function(item) {
-            console.log(item.price);
-
+            showUpdateColor("silver", item.price, silverPrice)
             setSilverPrice(item.price)
         })
 
@@ -37,7 +35,19 @@ function Commodities(props) {
         return () => {
             socket.off();
         }
-    }, []);
+    }, [goldPrice, silverPrice]);
+
+    function showUpdateColor(name, newPrice, oldPrice) {
+        let element = document.getElementsByClassName(name)[0];
+        if (oldPrice < newPrice) {
+            element.classList.add("increase");
+        } else {
+            element.classList.add("decrease");
+        }
+        let showUpdate = setTimeout(function() {
+            element.classList.remove("decrease", "increase")
+        }, 1000)
+    }
 
     return (
         <>
@@ -52,13 +62,13 @@ function Commodities(props) {
                         </tr>
                         <tr>
                             <td><Link to="/commodities/gold">Gold</Link></td>
-                            <td className="value price-value">
+                            <td className="value gold price-value">
                                 {Math.round(goldPrice * 100) / 100}
                             </td>
                         </tr>
                         <tr>
                             <td><Link to="/commodities/silver">Silver</Link></td>
-                            <td className="value price-value">
+                            <td className="value silver price-value">
                                 {Math.round(silverPrice * 100) / 100}
                             </td>
                         </tr>
