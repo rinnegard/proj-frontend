@@ -5,6 +5,7 @@ import axios from "axios";
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     let history = useHistory();
 
     function formSubmit(e) {
@@ -22,6 +23,7 @@ function Register() {
         })
         .catch(function(error) {
             console.log(error);
+            setErrorMessage(error.response.data.errors.detail)
         })
     }
 
@@ -41,6 +43,7 @@ function Register() {
                 <input type="email" name="email" required placeholder="john.doe@gmail.com" onChange={inputChange}/>
                 <label htmlFor="password">Password</label>
                 <input type="password" name="password" required onChange={inputChange}/>
+                {errorMessage && <p className="error">{errorMessage}</p>}
                 <input className="blue-button button" type="submit" value="Submit" />
             </form>
 
