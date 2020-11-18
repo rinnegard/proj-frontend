@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    let history = useHistory();
 
     function formSubmit(e) {
         e.preventDefault();
@@ -17,6 +18,7 @@ function Register() {
         .then(function(res) {
             console.log(res.data.data);
             console.log(res.data.data.message);
+            history.push("/login");
         })
         .catch(function(error) {
             console.log(error);
