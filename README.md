@@ -1,73 +1,19 @@
-Jag valde att använda react för frontenden. Jag tyckte om hur det fungerade tidigare och jag är ganska bekväm med react nu. Och jag tycker det är smidigt att arbeta på det sättet react kombinerar html och js. Och hur man kan återanvända komponenter på att enkelt sätt. Jag använder React Router  för att hanterna routing. Det var också enkelt att komma igång med när man var bekant med hur react fungerar.
+# proj-frontend
 
+Jag valde att använda React för frontend. Jag tyckte om hur det fungerade tidigare och jag är ganska bekväm med React nu. Och jag tycker det är smidigt att arbeta på det sättet React kombinerar html och javascript. Och hur man kan återanvända komponenter på att enkelt sätt. Det fungerar väldigt smidigt för den här typen av webbplats.
 
-# Getting Started with Create React App
+## Libraries
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Jag har valt att använda mig av en del olika biblotek som finns till React för att bygga ut funktionen lite.
 
-## Available Scripts
+#### Routing
 
-In the project directory, you can run:
+Jag använder [React Router](https://reactrouter.com) för att hanterna routing. Den verkar vara den mest använda och jag tyckte den fungerade bra och var lätt att använda tidigare i kursen.
 
-### `npm start`
+#### Charts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+För diagramet använder jag [Recharts](https://recharts.org/en-US/). Från vad jag kunde hitta så verkar det vara den populäraste och det såg ut som det var ganska simplet att få till en enkel graf men rechart.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Realtid
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+För realtid använder jag [socket.io](https://socket.io/) för att ta emot data från server. Jag valde den för jag var bekant med den från tidigare i kursen och den fungerade bra då och var inte så svår att arbeta med.
