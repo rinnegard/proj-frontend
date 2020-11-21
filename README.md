@@ -1,14 +1,13 @@
 # proj-frontend
 
-Jag valde att använda React för frontend. Jag tyckte om hur det fungerade tidigare och jag är ganska bekväm med React nu. Och jag tycker det är smidigt att arbeta på det sättet React kombinerar html och javascript. Och hur man kan återanvända komponenter på att enkelt sätt. Det fungerar väldigt smidigt för den här typen av webbplats.
+Jag valde att använda React för frontend. Jag ville fortsätta med det ramverk jag jobbat med under kursen för att repetera det och lära mig det lite bättre istället för att börja om från början med ett nytt ramverk. Men jag skulle vilja testa på angular i framtiden. Jag tyckte också om hur det var att arbeta med React. Jag gillar hur lätt det är att återanvända kod med de olika komponenterna. Och jag tycker också om sättet React kombinerar html och js. Det känns naturligt och inte alls så ostrukturerat som jag hade förväntat mig efter hur vi har hållt separera html och js i tidigare kurser. Det är också bra att det är så populärt så det finns mycket material att kolla på för att lära sig hur man gör vissa saker.
+
 
 ## Libraries
 
-Jag har valt att använda mig av en del olika biblotek som finns till React för att bygga ut funktionen lite.
-
 #### Routing
 
-Jag använder [React Router](https://reactrouter.com) för att hanterna routing. Den verkar vara den mest använda och jag tyckte den fungerade bra och var lätt att använda tidigare i kursen.
+Jag använder [React Router](https://reactrouter.com) för att hanterna routing. Den verkar vara den mest använda och jag tyckte den fungerade bra och var lätt att använda tidigare i kursen. Den har också en väldigt bra guide på deras webbplats så det var enkelt att lära sig.
 
 #### Charts
 
